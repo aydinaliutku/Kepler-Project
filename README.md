@@ -21,6 +21,8 @@ Requires Python 3.10+. Run these commands in an activated virtual environment.
 ```bash
 python -m pip install -r requirements.txt
 python evaluate.py --download --cluster
+python -m pip install -r requirements-dev.txt
+python -m unittest discover -s tests
 ```
 
 A first run downloads the KOI cumulative table to `data/kepler-koi.csv`. Use `--data path/to/file.csv` to run on a compatible local export. The CLI writes the dataset checksum, split sizes, metrics, optional silhouette scores and evaluation figures under `outputs/`. The [notebook](Kepler_Project.ipynb) explains the analysis in order and uses the same functions. Run it from the repository root in JupyterLab using the same Python environment.
@@ -38,3 +40,5 @@ The target is the published catalog disposition for those two classes. The repor
 ## Data and license
 
 NASA Exoplanet Archive. *Kepler Objects of Interest cumulative table*, [DOI 10.26133/NEA4](https://doi.org/10.26133/NEA4) and [column definitions](https://exoplanet.ipac.caltech.edu/docs/API_kepcandidate_columns.html). See [LICENSE](LICENSE) for the project code.
+
+CI checks installation, dependency compatibility, unit tests and CLI examples on Python 3.12 for each push and pull request. You can also run it from the Actions tab.
